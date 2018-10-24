@@ -42,7 +42,7 @@ public class ContentController {
         try {
             return contentService.deleteContent(idsVo.getIds());
         } catch (Exception e) {
-            ResultJson.error("删除失败",null);
+           return ResultJson.error("删除失败",null);
         }
     }
 }
