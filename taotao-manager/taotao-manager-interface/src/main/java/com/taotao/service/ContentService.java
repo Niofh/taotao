@@ -1,7 +1,10 @@
 package com.taotao.service;
 
 import com.taotao.common.pojo.EasyUIDataGridResult;
+import com.taotao.common.pojo.ResultJson;
 import com.taotao.pojo.TbContent;
+
+import java.util.List;
 
 /**
  *
@@ -19,4 +22,25 @@ public interface ContentService {
      * @return
      */
     EasyUIDataGridResult<TbContent> getContentList(Long contentCategoryId,Integer page, Integer rows);
+
+    /**
+     * 添加内容
+     * @param tbContent
+     * @return
+     */
+    ResultJson addContent(TbContent tbContent);
+
+    /**
+     * 修改内容
+     * @param tbContent
+     * @return
+     */
+    ResultJson updateContent(TbContent tbContent);
+
+    /**
+     * 删除内容
+     * @param ids
+     * @return
+     */
+    ResultJson deleteContent(List<Long> ids) throws Exception;
 }

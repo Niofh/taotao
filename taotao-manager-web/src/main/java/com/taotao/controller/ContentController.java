@@ -1,10 +1,11 @@
 package com.taotao.controller;
 
 import com.taotao.common.pojo.EasyUIDataGridResult;
+import com.taotao.common.pojo.ResultJson;
 import com.taotao.pojo.TbContent;
 import com.taotao.service.ContentService;
+import com.taotao.vo.IdsVo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,5 +25,24 @@ public class ContentController {
     public EasyUIDataGridResult<TbContent> getContentList(Long categoryId, Integer page, Integer rows) {
 
         return contentService.getContentList(categoryId, page, rows);
+    }
+
+    @RequestMapping("/content/save")
+    public ResultJson addContent(TbContent tbContent) {
+        return contentService.addContent(tbContent);
+    }
+
+    @RequestMapping("/content/update")
+    public ResultJson updateContent(TbContent tbContent) {
+        return contentService.updateContent(tbContent);
+    }
+
+    @RequestMapping("/content/delete")
+    public ResultJson deleteContent(IdsVo idsVo) {
+        try {
+            return contentService.deleteContent(idsVo.getIds());
+        } catch (Exception e) {
+            ResultJson.error("删除失败",null);
+        }
     }
 }
